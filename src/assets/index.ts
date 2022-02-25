@@ -1,0 +1,1 @@
+export { ReactComponent as ChiefSVG } from './chef.svg'
