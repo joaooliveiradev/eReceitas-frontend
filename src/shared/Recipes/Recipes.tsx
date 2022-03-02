@@ -1,27 +1,29 @@
 import styled from 'styled-components/macro'
-import { RecipeTypes } from 'resources/RecipeTypes'
-type RecipesProps = {
+import { RecipeType } from 'resources/types'
+interface RecipesProps {
     className?: string,
-    recipes: RecipeTypes[]
+    recipes: RecipeType[]
 }
 const Recipes = ({ className, recipes }: RecipesProps) => {
     return (
         <div className={className}>
             {!recipes ? null : recipes.map((recipe, index) => (
                 <ul key={index}>
-                    <li>Nome da Receita: {recipe.receita}</li>
-                    <li>Nome do Ingrediente: {recipe.ingrediente}</li>
-                    <li>Número da medida: {recipe.medida}</li>
-                    <li>Quantidade: {recipe.quantidade}</li>
-                    <li>Preço: {recipe.preco}</li>
-                    <li>
-                        <span>
-                            Passo a passo: 
-                        </span>
-                        <p>
-                            {recipe.preparo}
-                        </p>
-                    </li>
+                    <li>Nome da Receita: {recipe.name}</li> */
+                    {recipe.ingredients.map(ingredient => (
+                        <>
+                            <li>Nome do Ingrediente: {ingredient.name}</li>
+                            <li>Número da medida: {ingredient.measure}</li>
+                            <li>Quantidade: {ingredient.quantity}</li>
+                            <li>Preço: {ingredient.price}</li>
+                            <li>
+                                <span>Passo a passo:</span>
+                                <p>
+                                    {ingredient.prepare}
+                                </p>
+                            </li>
+                        </>
+                    ))}
                 </ul>
             ))}
         </div>
