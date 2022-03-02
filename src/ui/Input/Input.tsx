@@ -1,16 +1,16 @@
 import styled from 'styled-components/macro'
 type inputProps = {
-    labelText: string,
-    typeInput: string,
-    nameInputText: string,
+    labelText?: string,
+    typeInput?: string,
+    nameInputText?: string,
     className?: string,
-    error?: string,
+    errors?: string
 }
-const Input = ({ labelText, typeInput, nameInputText, className, error}: inputProps) => (
+const Input = ({ labelText, typeInput, nameInputText, className, errors }: inputProps) => (
     <label htmlFor={nameInputText} className={className}>
         {labelText}
         <input id={nameInputText} type={typeInput} name={nameInputText} autoComplete="off" />
-        {error && error}
+        {errors && <span>{errors}</span>}
     </label>
 )
 const StyledInput = styled(Input)`
@@ -26,6 +26,11 @@ const StyledInput = styled(Input)`
         &:focus {
             outline: none;
         }
+    }
+    span {
+        color: red;
+        padding-top: 0.5rem;
+        padding-left: 1rem;
     }
 `
 export { StyledInput as Input }

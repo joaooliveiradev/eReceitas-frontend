@@ -2,10 +2,9 @@ import styled from 'styled-components/macro'
 type ButtonProps = {
     className?: string,
     children: string,
-    isValid?: boolean
 }
-const Button = ({ className, children, isValid}: ButtonProps) => (
-    <button type="submit" className={className} disabled={isValid}>{children}</button>
+const Button = ({ className, children }: ButtonProps) => (
+    <button type="submit" className={className}>{children}</button>
 )
 const StyledButton = styled(Button)`
     margin-top: 0.5rem;
